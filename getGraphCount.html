@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <!-- Required meta tags -->
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ 
+   <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+ 
+   <!-- My Font -->
+   <link href="https://fonts.googleapis.com/css2?family=Viga&display=swap" rel="stylesheet">
+ 
+   <!-- My CSS -->
+   <link href="style.css" rel="stylesheet">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="plotly.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="newstyle.css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Padisel GetData</title>
+    </head>
+<body onload="autoread()">
+     <!-- Navigation Start -->
+     <nav class="navbar navbarAll navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">Padisel</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav ml-auto">
+            <a class="nav-item nav-link active" href="getDataCeramic.html">Severity Level <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="getGraphMag.html">Magnitude Graph</a>
+            <a class="nav-item nav-link" href="getGraphCount.html">Arcing Trend Graph</a>
+            <a class="nav-item tombol btn btn-primary" href="index.html">Logout</a>
+          </div>
+        </div>
+        </div>
+    </nav>
+      <!-- Navigation End -->
+
+    <div id="myDiv"></div>
+    <!-- <script>
+    function rand() {
+    return Math.random();
+    }
+
+    
+    </script> -->
+
+    <script>
+        // Initialize Firebase
+      
+        var counterVolt=0;
+        function autoread(){
+            var config = {
+              apiKey: "AIzaSyBAXigR7Xm3Uoh7Q6C4Semz5kv0iNWRl9c",
+              authDomain: "padiselugm.firebaseapp.com",
+              databaseURL: "https://padiselugm.firebaseio.com",
+              projectId: "padiselugm",
+              storageBucket: "padiselugm.appspot.com",
+              messagingSenderId: "814288091971",
+              appId: "1:814288091971:web:05c1dc3e9fee1854e44df6",
+              measurementId: "G-VDLRD60ZTV"
+        };
+
+            
+        if (!firebase.apps.length) {
+            firebase.initializeApp(config);
+        }
+    
+
+            // Reference messages collection
+            var messagesRef = firebase.database().ref('/PartialDischarge')
+
+            // Retrieve new posts as they are added to our database
+            
+            messagesRef.on('value',function(snapshot){
+              snapshot.forEach(function(childSnapshot) {
+                console.log("GetCountVolt: " + childSnapshot.val().countVolt);
+                console.log("timestamp: " + childSnapshot.val().timestamp);
+                
+                var getCountVolt = childSnapshot.val().countVolt;
+                var getTimestamp = childSnapshot.val().timestamp;
+
+                if ((getTimestamp+1)%360==0){
+                  getCountVolt=getCountVolt;
+                } else {
+                  getCountVolt=0;
+                }
+               
+                //graph
+                var time = new Date();
+
+                var data = [{
+                  x: [time+time],
+                  y: [getCountVolt],
+                  type: 'line',
+                  bar: {color: '#80CAF6'}
+                }]
+
+                Plotly.newPlot('myDiv', data);
+
+                var cnt = 0;
+
+                var interval = setInterval(function() {
+
+                  var time = new Date();
+
+                  var update = {
+                  x:  [[time]],
+                  y: [[getCountVolt]]
+                  }
+
+                  var olderTime = time.setMinutes(time.getMinutes() - 10);
+                  var futureTime = time.setMinutes(time.getMinutes() + 8);
+
+                  var minuteView = {
+                        title: {
+                        text:'PD Severity Level Monitoring',
+                        font: {
+                          family: 'Arial, monospace',
+                          size: 24,
+                          color: '#000000'
+                        }
+                        },
+                        xaxis: {
+                          title: {
+                          text: 'Time',
+                          font: {
+                            family: 'Arial, monospace',
+                            size: 18,
+                            color: '#000000'
+                          }
+                        },
+                          type: 'date',
+                          range: [olderTime,futureTime]
+                        },
+                        yaxis: {
+                          title: {
+                          text: 'Count',
+                          font: {
+                            family: 'Arial, monospace',
+                            size: 18,
+                            color: '#000000'
+                          }
+                        }
+                        }
+                      };
+
+                  Plotly.relayout('myDiv', minuteView);
+                  Plotly.extendTraces('myDiv', update, [0])
+
+                  if(++cnt === 10) clearInterval(interval);
+                }, 10);
+                        
+                
+                })
+                });
+              }
+        
+    </script>
+    <!-- <button onclick="autoread()">Cek</button> -->
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-database.js"></script>
+
+    <footer class="footer fixed-bottom text-white">
+      <div class="row pt-3">
+          <div class="col text-center">
+              <p>Capstone Project TTT 2020</p>
+          </div>
+      </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+
+</body>
+</html>

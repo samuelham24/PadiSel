@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- My Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Viga&display=swap" rel="stylesheet">
+
+    <!-- My CSS -->
+    <link href="style.css" rel="stylesheet">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="newstyle.css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Padisel GetData</title>
+    </head>
+<body onload="autoread()"> 
+
+   <!-- Navigation Start -->
+   <nav class="navbar navbarAll navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">Padisel</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav ml-auto">
+            <a class="nav-item nav-link active" href="getDataCeramic.html">Severity Level <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="getGraphMag.html">Magnitude Graph</a>
+            <a class="nav-item nav-link" href="getGraphCount.html">Arcing Trend Graph</a>
+            <a class="nav-item tombol btn btn-primary" href="index.html">Logout</a>
+          </div>
+        </div>
+        </div>
+    </nav>
+  <!-- Navigation End -->
+
+      <!-- Severity Level Section -->
+      <div class="containerx">
+        <div id="boxX" class="boxX">
+          <p><b>Ceramic Isolator</b><p>
+        </div>
+      </div>
+
+    <div class="containera">
+      <h2><b>Current condition :</b></h2>
+      <div  id="message" style="color:black; font-weight:bold; font-size: 200%;text-align: center; line-height: 10%;"></div><br>
+        <div id="box1" class="box1"></div>
+        <div id="box2" class="box2"></div>
+        <div id="box3" class="box3"></div>
+    </div>
+
+      <div class="containerb">
+          <div id="box4" class="box4">
+            <div  id="getSafe"></div>
+          </div>
+          <div id="box5" class="box5">
+            <div  id="getWatch"></div>
+          </div>
+          <div id="box6" class="box6">
+            <div  id="getAlert"></div>
+          </div>
+        </div>
+
+        <!-- <p>Voltage :</p>
+      <div  id="GetVoltData" style="color:black; font-weight:bold; font-size: 200%;text-align: center; line-height: 10%;"></div>
+    </div> -->
+
+    <div class="container1">
+      <div id="boxa" class="boxa">
+          <p>Freq (Hz)</p><br>
+          <div  id="getFrequency"></div>
+      </div>
+
+      <div id="boxb" class="boxb">
+          <p>dBA :</p><br>
+          <div  id="getdBA"></div>
+      </div>
+
+      <div id="boxc" class="boxc">
+          <p>Arc counter :</p><br>
+          <div  id="getCountVolt"></div>
+      </div>
+    </div>
+
+    <script>
+        // Initialize Firebase
+        function autoread(){
+            var config = {
+              apiKey: "AIzaSyBAXigR7Xm3Uoh7Q6C4Semz5kv0iNWRl9c",
+              authDomain: "padiselugm.firebaseapp.com",
+              databaseURL: "https://padiselugm.firebaseio.com",
+              projectId: "padiselugm",
+              storageBucket: "padiselugm.appspot.com",
+              messagingSenderId: "814288091971",
+              appId: "1:814288091971:web:05c1dc3e9fee1854e44df6",
+              measurementId: "G-VDLRD60ZTV"
+        };
+
+            
+        if (!firebase.apps.length) {
+            firebase.initializeApp(config);
+        }
+    
+
+            // Reference messages collection
+            var messagesRef = firebase.database().ref('/PartialDischarge')
+
+            // Retrieve new posts as they are added to our database
+            
+            messagesRef.on('value',function(snapshot){
+              snapshot.forEach(function(childSnapshot) {
+                var childdata= childSnapshot.val();
+                messagesRef.on('child_added', function(snapshot) {
+                console.log("GetCountVolt: " + childdata.countVolt);
+                console.log("GetdBA: " + childdata.dBA);
+                console.log("GetFrequency: " + childdata.frequency);
+              
+                
+                var getCountVolt = childdata.countVolt;
+                var getdBA = childdata.dBA;
+                var getFrequency = childdata.frequency;
+                var countVolt=0;
+                document.getElementById("getCountVolt").innerHTML = Math.round(getCountVolt);
+                document.getElementById("getdBA").innerHTML = Math.round(getdBA);
+                document.getElementById("getFrequency").innerHTML = Math.round(getFrequency);
+
+            function hijau(){
+              document.getElementById("box1").style.backgroundColor = '#006400'; //dark green
+              document.getElementById("box2").style.backgroundColor = 'white';
+              document.getElementById("box3").style.backgroundColor = 'white';
+              document.getElementById("getSafe").innerHTML = detect;
+              document.getElementById("getWatch").innerHTML = "_";
+              document.getElementById("getAlert").innerHTML = "_";
+            }
+
+            function kuning(){
+              document.getElementById("box1").style.backgroundColor = 'white';
+              document.getElementById("box2").style.backgroundColor = '#FFFF00';//yellow
+              document.getElementById("box3").style.backgroundColor = 'white';
+              document.getElementById("getSafe").innerHTML = "_";
+              document.getElementById("getWatch").innerHTML = detect;
+              document.getElementById("getAlert").innerHTML = "_";
+            }
+
+            function merah(){
+              document.getElementById("box1").style.backgroundColor = 'white';
+              document.getElementById("box2").style.backgroundColor = 'white';
+              document.getElementById("box3").style.backgroundColor = '#FF0000';//red
+              document.getElementById("getSafe").innerHTML = "_";
+              document.getElementById("getWatch").innerHTML = "_";
+              document.getElementById("getAlert").innerHTML = detect;
+            }
+
+            if (getdBA<65 && getCountVolt<=20){
+              message = "Safe";
+              detect = "No PD Detected";
+              hijau();
+            } else if(getdBA>65 && getCountVolt<=20){
+              message = "Watch";
+              detect = "PD Detected";
+              kuning();
+            } else if(getdBA>65 && getCountVolt>20){
+              message = "Alert";
+              detect = "PD & Arcing Detected";
+              merah();
+            }
+            document.getElementById("message").innerHTML = message;
+
+             
+            });
+            })
+            });
+        }
+        
+    </script>
+    <!-- <button onclick="autoread()">Cek</button> -->
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-database.js"></script>
+
+    <footer class="footer fixed-bottom text-white">
+      <div class="row pt-3">
+          <div class="col text-center">
+              <p>Capstone Project TTT 2020</p>
+          </div>
+      </div>
+  </footer>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+</body>
+</html>

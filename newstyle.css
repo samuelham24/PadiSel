@@ -1,0 +1,317 @@
+/*Navigation Section*/
+.topnav {
+	background-color: #333;
+	overflow: hidden;
+  }
+  
+  /* Style the links inside the navigation bar */
+  .topnav a {
+	float: left;
+	display: block;
+	color: #f2f2f2;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 17px;
+  }
+  
+  /* Change the color of links on hover */
+  .topnav a:hover {
+	background-color: #ddd;
+	color: black;
+  }
+  
+  /* Add an active class to highlight the current page */
+  .topnav a.active {
+	background-color: #4CAF50;
+	color: white;
+  }
+  
+  /* Hide the link that should open and close the topnav on small screens */
+  .topnav .icon {
+	display: none;
+  }
+
+/* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
+@media screen and (max-width: 600px) {
+	.topnav a:not(:first-child) {display: none;}
+	.topnav a.icon {
+	  float: right;
+	  display: block;
+	}
+  }
+  
+  /* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
+  @media screen and (max-width: 600px) {
+	.topnav.responsive {position: relative;}
+	.topnav.responsive a.icon {
+	  position: absolute;
+	  right: 0;
+	  top: 0;
+	}
+	.topnav.responsive a {
+	  float: none;
+	  display: block;
+	  text-align: left;
+	}
+  }
+
+/* Dropdown */
+/* Navbar container */
+.navbar {
+	overflow: hidden;
+	background-color: #333;
+	font-family: Arial;
+  }
+  
+  /* Links inside the navbar */
+  .topnav a {
+	float: left;
+	font-size: 16px;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+  }
+  
+  /* The dropdown container */
+  .dropdown {
+	float: left;
+	overflow: hidden;
+  }
+  
+  /* Dropdown button */
+  .dropdown .dropbtn {
+	font-size: 16px;
+	border: none;
+	outline: none;
+	color: white;
+	padding: 14px 16px;
+	background-color: inherit;
+	font-family: inherit; /* Important for vertical align on mobile phones */
+	margin: 0; /* Important for vertical align on mobile phones */
+  }
+  
+  /* Add a red background color to navbar links on hover */
+  .topnav a:hover, .dropdown:hover .dropbtn {
+	background-color: red;
+  }
+
+  /* Dropdown content (hidden by default) */
+  .dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #f9f9f9;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	z-index: 1;
+  }
+  
+  /* Links inside the dropdown */
+  .dropdown-content a {
+	float: none;
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+	text-align: left;
+  }
+  
+  /* Add a grey background color to dropdown links on hover */
+  .dropdown-content a:hover {
+	background-color: #ddd;
+  }
+  
+  /* Show the dropdown menu on hover */
+  .dropdown:hover .dropdown-content {
+	display: block;
+  }
+
+/*Severity Level Section*/
+.containerx	{ /*box semu navigator link*/
+	top: 0;
+    left: 0;
+	right: 0;
+	margin-top: 0%;
+	height: auto;
+	border-width: 1px;
+	border-style: solid;
+	border-color: rgba(111,111,111,0.01) transparent;
+	border-radius: 0px;
+	padding: 0%;
+	background-repeat: no-repeat;
+	background-size:auto;
+	text-align: center;
+}
+
+.boxX {
+	top: 0;
+	height: 50px;
+	width: 15%;
+	margin-top: -0.01%;
+	border-width: 0.001px;
+	border-style: hidden;
+	border-color: rgba(111,111,111,0.01) transparent;
+	display: inline-block;
+	background-image: linear-gradient(to bottom,#bdc3c7, #ecf0f1, white);
+}
+
+.containera	{ /*box semu navigator link*/
+	top: 0;
+    left: 0;
+	right: 0;
+	margin-top: 0%;
+	height: auto;
+	border-width: 0.01px;
+	border-style: solid;
+	border-color: rgba(111,111,111,0.01) transparent;
+	border-radius: 0px;
+	padding: 0%;
+	/*background-image: url(pict/white2.jpg);*/
+	background-repeat: no-repeat;
+	background-size:auto;
+	text-align: center;
+}
+
+.box1 , .box2 , .box3 {
+	height: 200px;
+	width: 15%;
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 30px;
+	border-color: black;
+	display: inline-block;
+}
+
+.box2 , .box3 {
+	margin-left: 2%;
+}
+
+/* info */
+.containerb	{ /*box semu navigator link*/
+	top: 0;
+    left: 0;
+	right: 0;
+	margin-top: 0%;
+	height: auto;
+	border-width: 0.01px;
+	border-style: solid;
+	border-color: rgba(111,111,111,0.01) transparent;
+	border-radius: 0px;
+	padding: 0%;
+	/*background-image: url(pict/white2.jpg);*/
+	background-repeat: no-repeat;
+	background-size:auto;
+	text-align: center;
+}
+
+.box4 , .box5 , .box6 {
+	height: 50px;
+	width: 15%;
+	border-width: 1px;
+	border-width: 0.001px;
+	border-style: solid;
+	border-color: rgba(111,111,111,0.01) transparent;
+	display: inline-block;
+	padding-top: 1%;
+}
+
+.box5 , .box6 {
+	margin-left: 2%;
+}
+
+.containerb ,.box4 {
+	color:black; font-weight:bold; font-size: 20px;text-align: center; line-height: 20%;
+}
+.containerb ,.box5 {
+	color:black; font-weight:bold; font-size: 20px;text-align: center; line-height: 20%;
+}
+.containerb ,.box6 {
+	color:black; font-weight:bold; font-size: 20px;text-align: center; line-height: 20%;
+}
+
+/* indicator */
+.container1	{ /*box semu navigator link*/
+	top: 0;
+    left: 0;
+    right: 0;
+	height: auto;
+	border-width: 0.01px;
+	border-style: solid;
+	border-color: rgba(111,111,111,0.01) transparent;
+	border-radius: 0px;
+	padding: 2%;
+	background-image: linear-gradient(to bottom,#bdc3c7, #ecf0f1, white);
+	background-repeat: no-repeat;
+	background-size:auto;
+}
+
+.boxa , .boxb , .boxc {
+	height: 70px;
+	width: 15%;
+	border-width: 0.01px;
+	border-style: solid;
+	border-radius: 10px;
+	border-color: black;
+	border-color: rgba(111,111,111,0.01) transparent;
+	background-image: linear-gradient(to bottom right,#16a085,#1abc9c, #f1c40f);
+	display: inline-block;
+	padding-top: 20px;
+	
+}
+.boxa {
+	margin-left: 0%;
+}
+.boxb , .boxc {
+	margin-left: 2%;
+}
+.container1 ,.boxa {
+	color:black; font-weight:bold; font-size: 120%;text-align: center; line-height: 20%;
+}
+.container1 ,.boxb {
+	color:black; font-weight:bold; font-size: 120%;text-align: center; line-height: 20%;
+}
+.container1 ,.boxc {
+	color:black; font-weight:bold; font-size: 120%;text-align: center; line-height: 20%;
+}
+
+/* graph */
+/*Severity Level Section*/
+.myDiv	{ /*box semu navigator link*/
+	width: auto;
+	height: 1000px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: rgba(111,111,111,0.01) transparent;
+	border-radius: 0px;
+	padding: 0%;
+}
+
+.container p {
+	text-align: center;
+	font-size: 25px;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+canvas {
+  display: block;
+}
+
+/* index */
+.responsivePict {
+	width: 100%;
+	height: auto;
+  }
+
+.footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background-color: darkgreen;
+	color: white;
+	text-align: center;
+  }

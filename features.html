@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- My Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Viga&display=swap" rel="stylesheet">
+
+    <!-- My CSS -->
+    <link href="style.css" rel="stylesheet">
+
+    <title>Padisel</title>
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">Padisel</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav ml-auto">
+            <a class="nav-item nav-link active" href="index.html">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="features.html">Features</a>
+            <a class="nav-item nav-link" href="contact.html">Contact Us</a>
+            <a class="nav-item tombol btn btn-primary" href="login.html">Login</a>
+          </div>
+        </div>
+        </div>
+    </nav>
+    
+    <!-- Jumbotron Start-->
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1 class="display-4">Partial Discharge <br> <span>Severity Level</span>  Meter</h1>
+          <a href="" class="btn btn-primary tombol">Capstone Project</a>
+          </div>
+      </div>
+    <!-- Jumbotron End -->
+
+    <!-- Container -->
+    <div class="container">
+        <!-- info panel -->
+        <div class="row justify-content-center">
+            <div class="col-11 info-panel">
+                <div class="row">
+                    <div class="col-lg">
+                        <img src="img/thunder.png" alt="time" class="float-left">
+                        <h4>Severity Level</h4>
+                        <p>Partial Discharge severity level with dBA parameter.</p>
+                    </div>
+                    <div class="col-lg">
+                        <img src="img/bars-chart.png" alt="time" class="float-left">
+                        <h4>Arc trending</h4>
+                        <p>Arc trending from arcing counter with Vout parameter.</p>
+                    </div>
+                    <div class="col-lg">
+                        <img src="img/time.png" alt="time" class="float-left">
+                        <h4>24 Hours</h4>
+                        <p>24 hours get data from sensor.</p>
+                    </div>
+                    <div class="col-lg">
+                        <img src="img/iot.png" alt="time" class="float-left">
+                        <h4>IoT Monitoring</h4>
+                        <p>Monitoring PD and Arc severity level from anywhere and anytime.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="jumbotron1">
+        <div class="container">
+            <div class="row mb-4 mt-4">
+                <div class="col text-center">
+                    <h2>Severity Level with Color Indicators</h2>
+                    <p>Acoustic emission data from the sensor is sent to the realtime database (Firebase) server using WiFi. The following display is the realtime monitoring received from Firebase.</p>
+                </div>
+            </div>
+            <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="img/green.png" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block ">
+                    <h5>Safe Condition</h5>
+                    <p>The safe conditions are represented in green which means no PD or Arc is detected.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="img/yellow.png" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                    <h5>Watch Condition</h5>
+                    <p>The watch condition is represented by orange which means that PD is detected but Arc is not detected.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="img/red.png" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                    <h5>Alert Condition</h5>
+                    <p>The alert condition is represented in red, which means PD and Arc are detected..</p>
+                    </div>
+                </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+                </a>
+            </div>
+            <br>
+            <a href="login.html" class="btn btn-primary tombol">Login to Get Data</a>
+
+            <div class="row mb-4 mt-4">
+                <div class="col text-center">
+                    <h2>Get Graph from Firebase</h2>
+                    <p>Besides being displayed on the color indicator, data from Firebase is also used for plotting graphs. The following display is a plot of PD magnitude graph and trending counter arcing with time..</p>
+                </div>
+            </div>
+            <div id="carouselExampleCaptions" class="carousel slide mb-4" data-ride="carousel">
+                <ol class="carousel-indicators">
+                <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                </ol>
+                <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="img/getMag.png" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block ">
+                    <h5>Partial Discharge (PD) Magnitude with Time</h5>
+                    <p>Magnitude detection results per second indicate the intensity of acoustic emissions from the Partial Discharge phenomenon.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="img/getCount.png" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                    <h5>Arcing Counter Tranding with Time</h5>
+                    <p>The results of the count value / 15 seconds can indicate the trending and intensity of the arcing phenomenon.</p>
+                    </div>
+                </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+                </a>
+            </div>
+            <a href="login.html" class="btn btn-primary tombol">Login to Get Data</a> 
+        </div>
+        <br>
+    </section>
+
+      <footer class="footer text-white">
+        <div class="row pt-3">
+            <div class="col text-center">
+                <p>Capstone Project TTT</p>
+                <p>Copyright 2020.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>
